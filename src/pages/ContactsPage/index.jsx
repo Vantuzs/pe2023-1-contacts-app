@@ -1,5 +1,5 @@
-import ContactForm from '../../components/ContactForm'
-import ContactsList from '../../components/ContactsList'
+import ContactForm from '../../components/ContactForm';
+import ContactsList from '../../components/ContactsList';
 
 function ContactsPage () {
   return (
@@ -8,7 +8,7 @@ function ContactsPage () {
       <ContactForm />
       <ContactsList />
     </main>
-  )
+  );
 }
 
-export default ContactsPage
+export default ContactsPage;

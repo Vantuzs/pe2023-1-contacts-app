@@ -8,7 +8,7 @@
 
 import ContactsPage from './pages/ContactsPage';
 
-function App() {
+function App () {
   return <ContactsPage />;
 }
 

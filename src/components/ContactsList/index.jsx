@@ -1,9 +1,9 @@
-import { connect } from 'react-redux'
-import { deleteContact, updateContact } from '../../store/slices/contactsSlice'
+import { connect } from 'react-redux';
+import { deleteContact, updateContact } from '../../store/slices/contactsSlice';
 
 function ContactsList ({ contacts, deleteContactById, updateContactById }) {
   const changeIsFavourite = (id, checked) =>
-    updateContactById(id, { isFavourite: checked })
+    updateContactById(id, { isFavourite: checked });
 
   return (
     <ul>
@@ -24,19 +24,19 @@ function ContactsList ({ contacts, deleteContactById, updateContactById }) {
         </li>
       ))}
     </ul>
-  )
+  );
 }
 
-const mapStateToProps = ({ contactsList }) => contactsList
+const mapStateToProps = ({ contactsList }) => contactsList;
 
 const mapDispatchToProps = dispatch => ({
   deleteContactById: id => dispatch(deleteContact(id)),
-  updateContactById: (id, data) => dispatch(updateContact({ id, data }))
-})
+  updateContactById: (id, data) => dispatch(updateContact({ id, data })),
+});
 
 // deleteContact(id) ===>
 //     action = {
 //        type: 'deleteContact',
 //        payload: id
 //     }
-export default connect(mapStateToProps, mapDispatchToProps)(ContactsList)
+export default connect(mapStateToProps, mapDispatchToProps)(ContactsList);
