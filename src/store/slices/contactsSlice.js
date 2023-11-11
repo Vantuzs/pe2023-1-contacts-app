@@ -19,9 +19,15 @@ const initialState = {
 const contactsSlice = createSlice({
   initialState,
   name: 'contacts',
-  reducers: {},
+  reducers: {
+    deleteContact: (state, { payload }) => {
+      state.contacts = state.contacts.filter(c => c.id !== payload);
+    },
+  },
 });
 
 const { reducer, actions } = contactsSlice;
+
+export const { deleteContact } = actions;
 
 export default reducer;
