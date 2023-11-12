@@ -1,18 +1,25 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://randomuser.me/api',
+  baseURL: 'https://jsonplaceholder.typicode.com',
 });
 
-axiosInstance
-  .get('/?results=2')
-  .then(({ data }) => console.log(data))
-  .catch(err => console.log(err));
+export const getPosts = () => axiosInstance.get('/posts');
 
-axiosInstance
-  .get('/?gender=female')
-  .then(({ data }) => console.log(data))
-  .catch(err => console.log(err));
+// ------------------------------------------
+// const axiosInstance = axios.create({
+//   baseURL: 'https://randomuser.me/api',
+// });
+
+// axiosInstance
+//   .get('/?results=2')
+//   .then(({ data }) => console.log(data))
+//   .catch(err => console.log(err));
+
+// axiosInstance
+//   .get('/?gender=female')
+//   .then(({ data }) => console.log(data))
+//   .catch(err => console.log(err));
 
 // axios
 //   .get('https://randomuser.me/api/?results=2')

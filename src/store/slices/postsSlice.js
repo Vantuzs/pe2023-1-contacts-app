@@ -1,9 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-const axiosInstance = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com',
-});
+import * as API from '../../api';
 
 const initialState = {
   posts: [],
@@ -15,7 +11,7 @@ export const getPostsThunk = createAsyncThunk(
   'posts/getPosts',
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axiosInstance.get('/posts');
+      const { data } = await API.getPosts();
       return data; // .fulfilled action.payload
     } catch (err) {
       return thunkAPI.rejectWithValue({ message: err.message }); // .rejected action.payload
