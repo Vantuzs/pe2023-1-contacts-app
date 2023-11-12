@@ -3,7 +3,15 @@ import { useEffect } from 'react';
 import { getPostsThunk } from '../../store/slices/postsSlice';
 import { getUsersThunk } from '../../store/slices/usersSlice';
 
-function PostsList ({ posts, isFetching, error, getPosts, getUsers, users }) {
+function PostsList ({
+  posts,
+  isFetching,
+  error,
+  getPosts,
+  getUsers,
+  normalizedUsers,
+  users,
+}) {
   useEffect(() => {
     getPosts();
     getUsers();
@@ -12,9 +20,7 @@ function PostsList ({ posts, isFetching, error, getPosts, getUsers, users }) {
   const mapPosts = p => (
     <li key={p.id}>
       <h3>{p.title}</h3>
-      {!!users.length && (
-        <span>{users.find(u => u.id === p.userId).username}</span>
-      )}
+      {!!users.length && <span>{normalizedUsers[p.userId].username}</span>}
       <p>{p.body}</p>
     </li>
   );
@@ -29,8 +35,12 @@ function PostsList ({ posts, isFetching, error, getPosts, getUsers, users }) {
 }
 
 // const mapStateToProps = (state) => {return {}}
-const mapStateToProps = ({ postsList, usersList: { users } }) => ({
+const mapStateToProps = ({
+  postsList,
+  usersList: { normalizedUsers, users },
+}) => ({
   ...postsList,
+  normalizedUsers,
   users,
 });
 // {
