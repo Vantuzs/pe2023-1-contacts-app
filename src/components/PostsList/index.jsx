@@ -1,6 +1,12 @@
 import { connect } from 'react-redux';
+import { useEffect } from 'react';
+import { getPostsThunk } from '../../store/slices/postsSlice';
 
-function PostsList ({ posts, isFetching, error }) {
+function PostsList ({ posts, isFetching, error, getPosts }) {
+  useEffect(() => {
+    getPosts();
+  }, []);
+
   const mapPosts = p => (
     <li key={p.id}>
       <h3>{p.title}</h3>
@@ -19,4 +25,8 @@ function PostsList ({ posts, isFetching, error }) {
 
 const mapStateToProps = ({ postsList }) => postsList;
 
-export default connect(mapStateToProps)(PostsList);
+const mapDispathToProps = dispatch => ({
+  getPosts: () => dispatch(getPostsThunk()),
+});
+
+export default connect(mapStateToProps, mapDispathToProps)(PostsList);
