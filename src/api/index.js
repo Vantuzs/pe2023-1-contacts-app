@@ -6,6 +6,8 @@ const axiosInstance = axios.create({
 
 export const getPosts = () => axiosInstance.get('/posts');
 
+export const getUsers = () => axiosInstance.get('/users');
+
 // ------------------------------------------
 // const axiosInstance = axios.create({
 //   baseURL: 'https://randomuser.me/api',
